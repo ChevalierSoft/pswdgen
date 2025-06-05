@@ -8,7 +8,7 @@ pswdgen generates a random password.
 
 ## Install
 
-`go install github.com/chevaliersoft/pswdgen@latest`
+`go install github.com/chevaliersoft/pswdgen@v1.0.0`
 
 ## Man
 
