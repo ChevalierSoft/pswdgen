@@ -1,10 +1,14 @@
 # pswdgen
 
-pswdgen generates a password for you
+pswdgen generates a random password.
 
 ## Build
 
 `go build .`
+
+## Install
+
+`go install github.com/chevaliersoft/pswdgen@latest`
 
 ## Man
 
