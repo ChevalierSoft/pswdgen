@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"os"
 
-	"pswdgen/pkg/gen"
+	"github.com/chevaliersoft/pswdgen/pkg/gen"
 
 	"github.com/spf13/cobra"
 )

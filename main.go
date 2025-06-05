@@ -1,6 +1,6 @@
 package main
 
-import "pswdgen/cmd"
+import "github.com/chevaliersoft/pswdgen/cmd"
 
 func main() {
   cmd.Execute()

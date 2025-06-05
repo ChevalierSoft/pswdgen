@@ -1,4 +1,4 @@
-module github.com/ChevalierSoft/pswdgen
+module github.com/chevaliersoft/pswdgen
 
 go 1.24
 
