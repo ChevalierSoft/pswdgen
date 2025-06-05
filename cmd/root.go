@@ -9,14 +9,22 @@ import (
 	"github.com/spf13/cobra"
 )
 
+const (
+  MaxLength = 2048
+)
+
 var info gen.PswdInfo = gen.PswdInfo{}
 
 var rootCmd = &cobra.Command{
 	Use:   "pswdgen",
-	Short: "pswdgen generates a password for you",
+	Short: "pswdgen generates a random password",
 	Args:  cobra.MinimumNArgs(0),
 	Run: func(cmd *cobra.Command, args []string) {
-		gen.Gen(&info)
+    if info.Len > 2048 {
+      fmt.Printf("error: length must be lower than %d.\n", MaxLength)
+      os.Exit(1)
+    }
+		gen.Gen(info)
 	},
 }
 

@@ -2,7 +2,7 @@ package gen
 
 import (
 	"fmt"
-	"math/rand"
+	"math/rand/v2"
 	"strings"
 )
 
@@ -31,34 +31,42 @@ func NewPswdInfo(l int, lower, upper, num, spe bool) PswdInfo {
 	}
 }
 
-func setDictionary(info *PswdInfo) string {
-	dict := ""
+func setDictionary(info PswdInfo) []string {
+	dict := []string{}
 	if info.Lower {
-		dict += lower
+		dict = append(dict, lower)
 	}
 	if info.Upper {
-		dict += upper
+		dict = append(dict, upper)
 	}
 	if info.Numbers {
-		dict += numbers
+		dict = append(dict, numbers)
 	}
 	if info.Special {
-		dict += specials
+		dict = append(dict, specials)
 	}
 	return dict
 }
 
-func Gen(info *PswdInfo) {
+func Gen(info PswdInfo) {
 	if !info.Lower && !info.Upper && !info.Numbers && !info.Special {
 		info.Lower = true
 		info.Upper = true
 		info.Numbers = true
 		info.Special = true
 	}
-	lib := setDictionary(info)
+
+	dict := setDictionary(info)
+
 	pswd := make([]rune, info.Len)
 	for i := range pswd {
-		pswd[i] = rune(lib[rand.Intn(len(lib))])
+    charset := dict[rand.IntN(len(dict))]
+		pswd[i] = rune(charset[rand.IntN(len(charset))])
 	}
+
 	fmt.Println(string(pswd))
+
+  for i := range pswd {
+		pswd[i] = rune(0)
+	}
 }
